@@ -1,1 +1,1 @@
-# streamlit_app
+To launch streamlit run "poetry run streamlit run STREAMLIT_APP.py". 
