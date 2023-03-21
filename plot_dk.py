@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 import numpy as np 
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def plot_dk():
