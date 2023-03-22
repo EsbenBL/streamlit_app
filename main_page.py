@@ -2,7 +2,16 @@ from plot_europe import plot_europe
 from plot_dk import plot_dk
 import streamlit as st 
 
-st.set_page_config(page_title = "Test af Streamlit")
+st.set_page_config(initial_sidebar_state="collapsed", page_title = "Hej")
+
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
 st.header("Kort over Europa og Danmark")
 
 st.write("Hvad vil du gerne se?")
@@ -20,3 +29,9 @@ elif eu_button:
     st.pyplot(fig)
     st.write("Ovenfor ses et utroligt flot kort over Europa, hvor Holland, Danmark og Sverige er fremhævet (GO ADC!)")
 
+st.header("Ocean Tech i Danmark")
+
+with open("Plot/network_test.html", "r") as file:
+    html_file = file.read()
+
+st.components.v1.html(html_file, height = 600)
