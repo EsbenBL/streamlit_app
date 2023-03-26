@@ -2,36 +2,37 @@ from plot_europe import plot_europe
 from plot_dk import plot_dk
 import streamlit as st 
 
-st.set_page_config(initial_sidebar_state="collapsed", page_title = "Hej")
+## Page Configs 
+st.set_page_config(initial_sidebar_state="collapsed", page_title = "Unresolved Crime in San Francisco")
 
-hide_menu_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        </style>
-        """
+# hide_menu_style = """
+#         <style>
+#         #MainMenu {visibility: hidden;}
+#         </style>
+#         """
 
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+# st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-st.header("Kort over Europa og Danmark")
+## HTML Plot 
+st.header("Map of Unresolved Crime Distributed by San Francisco Neighborhoods")
 
-st.write("Hvad vil du gerne se?")
+HtmlFile = open("Plot/SF_unresolved_crime.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+st.components.v1.html(source_code, height = 650, width = 1050)
 
-dk_button = st.button("Se Danmark tættere på?") 
-eu_button = st.button("Se Europa?") 
+# st.header("Kort over Europa og Danmark")
 
-if dk_button:
-    fig = plot_dk()
-    st.pyplot(fig)
-    st.button("Se Europa igen?")
-    st.write("Ovenfor ses et utroligt flot kort over Danmark!")
-elif eu_button:
-    fig = plot_europe()
-    st.pyplot(fig)
-    st.write("Ovenfor ses et utroligt flot kort over Europa, hvor Holland, Danmark og Sverige er fremhævet (GO ADC!)")
+# st.write("Hvad vil du gerne se?")
 
-st.header("Ocean Tech i Danmark")
+# dk_button = st.button("Se Danmark tættere på?") 
+# eu_button = st.button("Se Europa?") 
 
-with open("Plot/network_test.html", "r") as file:
-    html_file = file.read()
-
-st.components.v1.html(html_file, height = 600)
+# if dk_button:
+#     fig = plot_dk()
+#     st.pyplot(fig)
+#     st.button("Se Europa igen?")
+#     st.write("Ovenfor ses et utroligt flot kort over Danmark!")
+# elif eu_button:
+#     fig = plot_europe()
+#     st.pyplot(fig)
+#     st.write("Ovenfor ses et utroligt flot kort over Europa, hvor Holland, Danmark og Sverige er fremhævet (GO ADC!)")
